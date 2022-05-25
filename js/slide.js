@@ -11,8 +11,8 @@ export default class Slide {
   }
 
   updatePosition(clientX) {
-    this.dist.movement = this.dist.startX - clientX;
-    return this.dist.movement;
+    this.dist.movement = (this.dist.startX - clientX) * 1.6;
+    return this.dist.finalPosition - this.dist.movement;
   }
 
   onStart(event) {
@@ -22,12 +22,13 @@ export default class Slide {
   }
 
   onMove(event) {
-     const finalPosition = this.updatePosition(event.clientX);
-     this.moveSlide(finalPosition);
+    const finalPosition = this.updatePosition(event.clientX);
+    this.moveSlide(finalPosition);
   }
 
-  onEnd(event) {   
+  onEnd(event) {
     this.wrapper.removeEventListener('mousemove', this.onMove);
+    this.dist.finalPosition = this.dist.movePosition;
   }
 
   addSlideEvents() {
