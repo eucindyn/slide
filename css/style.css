@@ -71,3 +71,10 @@ img {
 [data-control='slide'] li.active a, [data-control='slide'] li a:hover {
   background: var(--cor-tx2);
 }
+
+.custom-controls {
+  display: flex;
+  justify-items: center;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
